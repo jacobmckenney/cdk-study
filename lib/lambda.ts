@@ -1,4 +1,4 @@
-import { Stack, StackProps } from "aws-cdk-lib";
+import { Duration, Stack, StackProps } from "aws-cdk-lib";
 import * as ApiGateway from "aws-cdk-lib/aws-apigateway";
 import * as Lambda from "aws-cdk-lib/aws-lambda";
 import * as LambdaEventSources from "aws-cdk-lib/aws-lambda-event-sources";
@@ -63,7 +63,11 @@ export class LambdaStack extends Stack {
             },
         });
 
-        const sqsEventSource = new LambdaEventSources.SqsEventSource(sqs);
+        const sqsEventSource = new LambdaEventSources.SqsEventSource(sqs, {
+            // Process maximum of 10 messages per invocation, wait at most 30 seconds
+            maxBatchingWindow: Duration.seconds(30),
+            batchSize: 10,
+        });
 
         logObjectCreateEventLambda.addEventSource(sqsEventSource);
     }
