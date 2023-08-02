@@ -1,15 +1,12 @@
-# Welcome to your CDK TypeScript project
+# CDK Study
 
-You should explore the contents of this project. It demonstrates a CDK app with an instance of a stack (`AwsStack`)
-which contains an Amazon SQS queue that is subscribed to an Amazon SNS topic.
+Learning how to use cdk to declare maintainable sets of aws resources and properly wire them together to create entire cloud systems.
 
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+## AWSStack
 
-## Useful commands
+Setup a load balanced elastic container service fargate cluster with
+a simple Dockerized container - Wrote a github actions script to, build, tag, and push the container when Dockerfile is changed
 
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
+## LambdaStack
+
+Setup a set of resources to kick off a pipeline of actions in AWS. Very simple pipeline for learning how to wire s3, sns, sqs, and lambda together primarily through event-based actions.
