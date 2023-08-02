@@ -4,6 +4,7 @@ on:
     push:
         branches:
             - master
+            - main
 
 jobs:
     push_to_ecr:

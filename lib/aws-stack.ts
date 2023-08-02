@@ -1,4 +1,5 @@
 import { Stack, StackProps } from "aws-cdk-lib";
+import { DockerImageAsset } from "aws-cdk-lib/aws-ecr-assets";
 import * as ECS from "aws-cdk-lib/aws-ecs";
 import { ApplicationLoadBalancedFargateService } from "aws-cdk-lib/aws-ecs-patterns";
 import { Construct } from "constructs";
@@ -10,9 +11,9 @@ export class AwsStack extends Stack {
         const cluster = new ECS.Cluster(this, "jacob-testing-ecs-cluster");
 
         // // Build Docker image and push it to ECR
-        // const image = new DockerImageAsset(this, "jacob-testing", {
-        //     directory: "./",
-        // });
+        const image = new DockerImageAsset(this, "jacob-testing", {
+            directory: "./",
+        });
 
         // Create ECS service with previously built and pushed image
         new ApplicationLoadBalancedFargateService(this, "jacob-testing-ecs-service", {
