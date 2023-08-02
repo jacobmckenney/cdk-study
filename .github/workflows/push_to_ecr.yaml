@@ -4,7 +4,8 @@ on:
     push:
         branches:
             - master
-            - main
+        paths:
+            - "Dockerfile"
 
 jobs:
     push_to_ecr:
